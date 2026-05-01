@@ -436,7 +436,7 @@ class ForYouScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(child: _ForYouEmptyState());
+    return const _ForYouMailScreen();
   }
 }
 
@@ -913,85 +913,6 @@ class AccountScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class _ForYouEmptyState extends StatelessWidget {
-  const _ForYouEmptyState();
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const _TopBar(title: 'For You'),
-        Expanded(
-          child: Container(
-            color: const Color(0xFF020304),
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 170,
-                  height: 170,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF101216),
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Colors.white10),
-                  ),
-                  child: Image.asset(
-                    TmAssets.forYouEmpty,
-                    width: 110,
-                    height: 110,
-                    fit: BoxFit.contain,
-                    cacheWidth: 220,
-                    cacheHeight: 220,
-                  ),
-                ),
-                const SizedBox(height: 24),
-                const Text(
-                  'NO FAVOURITES YET',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 1.1,
-                    fontSize: 14,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40),
-                  child: Text(
-                    'Please add favourites to unlock your personalised experience.',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white70, height: 1.4),
-                  ),
-                ),
-                const SizedBox(height: 22),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black,
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(2),
-                        ),
-                      ),
-                      child: const Text('Add Your Favorites'),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

@@ -5,7 +5,6 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 
-import 'color_compat.dart';
 
 const double kTicketCardHeaderImageAspectRatio = 2.0;
 

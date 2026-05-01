@@ -1242,14 +1242,26 @@ class _TransferPageState extends State<_TransferPage> {
   }
 
   Future<void> _openTransferFlowSheet() async {
-    await showModalBottomSheet<void>(
+    final created = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       barrierColor: Colors.black.withValues(alpha: 0.18),
       builder: (sheetContext) {
-        return _TransferFlowSheet(ticketCount: widget.ticketCount);
+        return _TransferFlowSheet(
+          ticket: widget.ticket,
+          ticketCount: widget.ticketCount,
+        );
       },
+    );
+    if (!mounted || created != true) {
+      return;
+    }
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Confirmation email added to For You.'),
+        duration: Duration(seconds: 2),
+      ),
     );
   }
 
@@ -1589,8 +1601,9 @@ class _TransferTicketActionsCard extends StatelessWidget {
 enum _TransferSheetStep { selectTickets, transferTo }
 
 class _TransferFlowSheet extends StatefulWidget {
-  const _TransferFlowSheet({required this.ticketCount});
+  const _TransferFlowSheet({required this.ticket, required this.ticketCount});
 
+  final _TicketListEntry ticket;
   final int ticketCount;
 
   @override
@@ -1600,6 +1613,7 @@ class _TransferFlowSheet extends StatefulWidget {
 class _TransferFlowSheetState extends State<_TransferFlowSheet> {
   _TransferSheetStep _step = _TransferSheetStep.selectTickets;
   final Set<int> _selectedTicketIndexes = <int>{};
+  bool _isCompleting = false;
 
   int get _selectedCount => _selectedTicketIndexes.length;
 
@@ -1624,6 +1638,32 @@ class _TransferFlowSheetState extends State<_TransferFlowSheet> {
     setState(() {
       _step = _TransferSheetStep.selectTickets;
     });
+  }
+
+  Future<void> _completeTransfer() async {
+    if (_selectedCount == 0 || _isCompleting) {
+      return;
+    }
+    setState(() {
+      _isCompleting = true;
+    });
+    var completed = false;
+    try {
+      await _TicketmasterCloudStore.instance.createTransferConfirmationEmail(
+        ticket: widget.ticket,
+        selectedCount: _selectedCount,
+      );
+      if (mounted) {
+        completed = true;
+        Navigator.of(context).pop(true);
+      }
+    } finally {
+      if (mounted && !completed) {
+        setState(() {
+          _isCompleting = false;
+        });
+      }
+    }
   }
 
   @override
@@ -1675,6 +1715,9 @@ class _TransferFlowSheetState extends State<_TransferFlowSheet> {
                     selectedCount: _selectedCount,
                     bottomInset: media.padding.bottom,
                     onBack: _goBackToSelection,
+                    onRecipientAction: () {
+                      unawaited(_completeTransfer());
+                    },
                   ),
           ),
         ),
@@ -1894,11 +1937,13 @@ class _TransferRecipientStep extends StatelessWidget {
     required this.selectedCount,
     required this.bottomInset,
     required this.onBack,
+    required this.onRecipientAction,
   });
 
   final int selectedCount;
   final double bottomInset;
   final VoidCallback onBack;
+  final VoidCallback onRecipientAction;
 
   @override
   Widget build(BuildContext context) {
@@ -1917,15 +1962,17 @@ class _TransferRecipientStep extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 22),
           child: Column(
-            children: const [
+            children: [
               _TransferRecipientButton(
                 label: 'SELECT FROM CONTACTS',
                 icon: Icons.contacts_outlined,
+                onPressed: onRecipientAction,
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               _TransferRecipientButton(
                 label: 'MANUALLY ENTER A RECIPIENT',
                 icon: Icons.add_circle_outline,
+                onPressed: onRecipientAction,
               ),
             ],
           ),
@@ -2004,10 +2051,15 @@ class _TransferRecipientStep extends StatelessWidget {
 }
 
 class _TransferRecipientButton extends StatelessWidget {
-  const _TransferRecipientButton({required this.label, required this.icon});
+  const _TransferRecipientButton({
+    required this.label,
+    required this.icon,
+    required this.onPressed,
+  });
 
   final String label;
   final IconData icon;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -2015,7 +2067,7 @@ class _TransferRecipientButton extends StatelessWidget {
       width: double.infinity,
       height: 46,
       child: OutlinedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         style: OutlinedButton.styleFrom(
           foregroundColor: const Color(0xFF1472D0),
           side: const BorderSide(color: Color(0xFF1472D0)),

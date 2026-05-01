@@ -11,7 +11,6 @@ import 'package:flutter/material.dart' as material show Text;
 import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
 
-import 'color_compat.dart';
 import 'device_identity_service.dart';
 import 'firebase_options.dart';
 import 'startup/connection_probe.dart';
@@ -23,6 +22,7 @@ import 'theme/tm_tokens.dart';
 part 'app/app_core.dart';
 part 'app/auth_flow.dart';
 part 'app/editable_text.dart';
+part 'app/for_you_mail.dart';
 part 'app/home_shell.dart';
 part 'app/local_persistence.dart';
 part 'app/tickets_flow.dart';

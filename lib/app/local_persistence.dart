@@ -11,14 +11,24 @@ class _TicketmasterCloudStore {
 
   Map<String, String> _editedTexts = <String, String>{};
   List<_TicketListEntry> _upcomingTickets = <_TicketListEntry>[];
+  List<_ForYouMailEntry> _forYouMails = <_ForYouMailEntry>[];
   TicketmasterDeviceInfo? _deviceInfo;
   DateTime? _sessionStartedAt;
   Future<void> _pendingWrite = Future<void>.value();
+  final ValueNotifier<int> forYouMailRevision = ValueNotifier<int>(0);
 
   List<_TicketListEntry> get upcomingTickets =>
       List<_TicketListEntry>.from(_upcomingTickets);
 
   bool get hasSavedTickets => _upcomingTickets.isNotEmpty;
+
+  List<_ForYouMailEntry> get forYouMails {
+    final mails = List<_ForYouMailEntry>.from(_forYouMails);
+    if (!mails.any((mail) => mail.id == _ForYouMailEntry.sample.id)) {
+      mails.add(_ForYouMailEntry.sample);
+    }
+    return mails;
+  }
 
   bool get isSessionExpired {
     final startedAt = _sessionStartedAt;
@@ -69,10 +79,12 @@ class _TicketmasterCloudStore {
         profileData?['sessionStartedAt'],
       );
       final remoteUpdatedAt = _readSnapshotUpdatedAt(profileData?['updatedAt']);
+      final remoteForYouMails = _readForYouMails(profileData?['forYouMails']);
       final remoteTickets = await _loadTicketsForUser(currentUser.uid);
       final remoteSnapshot = _LocalTicketmasterSnapshot(
         editedTexts: remoteEditedTexts,
         upcomingTickets: remoteTickets,
+        forYouMails: remoteForYouMails,
         sessionStartedAt: remoteSessionStartedAt,
         updatedAt: remoteUpdatedAt,
       );
@@ -138,16 +150,41 @@ class _TicketmasterCloudStore {
     unawaited(_queueTicketsPersist());
   }
 
+  Future<void> createTransferConfirmationEmail({
+    required _TicketListEntry ticket,
+    required int selectedCount,
+  }) async {
+    final mail = _ForYouMailEntry.fromTicket(
+      ticket: ticket,
+      selectedCount: selectedCount,
+    );
+    _forYouMails = <_ForYouMailEntry>[
+      mail,
+      ..._forYouMails.where((entry) => entry.id != mail.id),
+    ];
+    _notifyForYouMailsChanged();
+    await _persistLocalState();
+    unawaited(_queueProfilePersist());
+  }
+
   void _resetInMemoryState() {
     _editedTexts = <String, String>{};
     _upcomingTickets = <_TicketListEntry>[];
+    _forYouMails = <_ForYouMailEntry>[];
     _sessionStartedAt = null;
+    _notifyForYouMailsChanged();
   }
 
   void _applySnapshot(_LocalTicketmasterSnapshot snapshot) {
     _editedTexts = Map<String, String>.from(snapshot.editedTexts);
     _upcomingTickets = List<_TicketListEntry>.from(snapshot.upcomingTickets);
+    _forYouMails = List<_ForYouMailEntry>.from(snapshot.forYouMails);
     _sessionStartedAt = snapshot.sessionStartedAt;
+    _notifyForYouMailsChanged();
+  }
+
+  void _notifyForYouMailsChanged() {
+    forYouMailRevision.value++;
   }
 
   Future<TicketmasterDeviceInfo> _ensureDeviceInfo() async {
@@ -282,6 +319,11 @@ class _TicketmasterCloudStore {
         remoteTickets: remoteSnapshot.upcomingTickets,
         preferRemote: preferRemote,
       ),
+      forYouMails: _mergeForYouMails(
+        localMails: localSnapshot.forYouMails,
+        remoteMails: remoteSnapshot.forYouMails,
+        preferRemote: preferRemote,
+      ),
       sessionStartedAt: preferRemote
           ? (remoteSnapshot.sessionStartedAt ?? localSnapshot.sessionStartedAt)
           : (localSnapshot.sessionStartedAt ?? remoteSnapshot.sessionStartedAt),
@@ -340,6 +382,39 @@ class _TicketmasterCloudStore {
         .toList(growable: false);
   }
 
+  List<_ForYouMailEntry> _mergeForYouMails({
+    required List<_ForYouMailEntry> localMails,
+    required List<_ForYouMailEntry> remoteMails,
+    required bool preferRemote,
+  }) {
+    if (localMails.isEmpty) {
+      return List<_ForYouMailEntry>.from(remoteMails);
+    }
+    if (remoteMails.isEmpty) {
+      return List<_ForYouMailEntry>.from(localMails);
+    }
+
+    final primary = preferRemote ? remoteMails : localMails;
+    final secondary = preferRemote ? localMails : remoteMails;
+    final byId = <String, _ForYouMailEntry>{};
+    for (final mail in secondary) {
+      byId[mail.id] = mail;
+    }
+    for (final mail in primary) {
+      byId[mail.id] = mail;
+    }
+
+    final orderedIds = <String>[
+      ...primary.map((mail) => mail.id),
+      ...secondary.map((mail) => mail.id),
+    ];
+    final seen = <String>{};
+    return <_ForYouMailEntry>[
+      for (final id in orderedIds)
+        if (seen.add(id) && byId[id] != null) byId[id]!,
+    ];
+  }
+
   DateTime? _latestSnapshotTimestamp(DateTime? left, DateTime? right) {
     if (left == null) {
       return right;
@@ -372,6 +447,8 @@ class _TicketmasterCloudStore {
       final deviceInfo = await _ensureDeviceInfo();
       final payload = <String, dynamic>{
         'editedTexts': _editedTexts,
+        'forYouMails':
+            _forYouMails.map((mail) => mail.toJson()).toList(growable: false),
         'sessionStartedAt': _sessionStartedAt == null
             ? null
             : Timestamp.fromDate(_sessionStartedAt!),
@@ -580,6 +657,16 @@ class _TicketmasterCloudStore {
     return values;
   }
 
+  List<_ForYouMailEntry> _readForYouMails(Object? raw) {
+    if (raw is! List) {
+      return <_ForYouMailEntry>[];
+    }
+    return raw
+        .map(_ForYouMailEntry.fromJson)
+        .whereType<_ForYouMailEntry>()
+        .toList(growable: false);
+  }
+
   DateTime? _readSessionStartedAt(Object? raw) {
     if (raw is Timestamp) {
       return raw.toDate();
@@ -636,6 +723,7 @@ class _TicketmasterCloudStore {
     final snapshot = _LocalTicketmasterSnapshot(
       editedTexts: _editedTexts,
       upcomingTickets: _upcomingTickets,
+      forYouMails: _forYouMails,
       sessionStartedAt: _sessionStartedAt,
       updatedAt: DateTime.now(),
     );
@@ -692,18 +780,21 @@ class _LocalTicketmasterSnapshot {
   const _LocalTicketmasterSnapshot({
     required this.editedTexts,
     required this.upcomingTickets,
+    required this.forYouMails,
     this.sessionStartedAt,
     this.updatedAt,
   });
 
   final Map<String, String> editedTexts;
   final List<_TicketListEntry> upcomingTickets;
+  final List<_ForYouMailEntry> forYouMails;
   final DateTime? sessionStartedAt;
   final DateTime? updatedAt;
 
   bool get hasMeaningfulData =>
       editedTexts.isNotEmpty ||
       upcomingTickets.isNotEmpty ||
+      forYouMails.isNotEmpty ||
       sessionStartedAt != null;
 
   Map<String, dynamic> toJson() {
@@ -711,6 +802,8 @@ class _LocalTicketmasterSnapshot {
       'editedTexts': editedTexts,
       'sessionStartedAt': sessionStartedAt?.toIso8601String(),
       'updatedAt': updatedAt?.toIso8601String(),
+      'forYouMails':
+          forYouMails.map((mail) => mail.toJson()).toList(growable: false),
       'upcomingTickets': upcomingTickets
           .map(
             (_TicketListEntry ticket) => <String, dynamic>{
@@ -744,6 +837,7 @@ class _LocalTicketmasterSnapshot {
   static _LocalTicketmasterSnapshot fromJson(Map<String, dynamic> json) {
     final rawEditedTexts = json['editedTexts'];
     final rawTickets = json['upcomingTickets'];
+    final rawForYouMails = json['forYouMails'];
 
     final editedTexts = <String, String>{};
     if (rawEditedTexts is Map) {
@@ -817,9 +911,20 @@ class _LocalTicketmasterSnapshot {
       }
     }
 
+    final forYouMails = <_ForYouMailEntry>[];
+    if (rawForYouMails is List) {
+      for (final rawMail in rawForYouMails) {
+        final mail = _ForYouMailEntry.fromJson(rawMail);
+        if (mail != null) {
+          forYouMails.add(mail);
+        }
+      }
+    }
+
     return _LocalTicketmasterSnapshot(
       editedTexts: editedTexts,
       upcomingTickets: upcomingTickets,
+      forYouMails: forYouMails,
       sessionStartedAt: _readDateValue(json['sessionStartedAt']),
       updatedAt: _readDateValue(json['updatedAt']),
     );
