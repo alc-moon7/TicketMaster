@@ -1,0 +1,46 @@
+type User @table {
+  displayName: String!
+  email: String
+  profilePictureUrl: String
+  bio: String
+  location: String
+  createdAt: Timestamp!
+}
+
+type Item @table {
+  owner: User!
+  name: String!
+  description: String!
+  acquisitionDate: Date!
+  yearOfOrigin: Int
+  condition: String
+  provenance: String
+  value: Float
+  forTrade: Boolean
+  forSalePrice: Float
+  isPublic: Boolean!
+  createdAt: Timestamp!
+}
+
+type Photo @table {
+  item: Item!
+  imageUrl: String!
+  caption: String
+  order: Int
+  createdAt: Timestamp!
+}
+
+type Showcase @table {
+  owner: User!
+  name: String!
+  description: String
+  isPublic: Boolean!
+  createdAt: Timestamp!
+}
+
+type ShowcaseItem @table(key: ["showcase", "item"]) {
+  showcase: Showcase!
+  item: Item!
+  addedAt: Timestamp!
+  note: String
+}

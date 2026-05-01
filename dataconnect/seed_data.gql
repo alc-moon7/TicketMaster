@@ -1,0 +1,119 @@
+mutation CreateDemoData @transaction @auth(level: USER, insecureReason: "This operation is for seed data and can be run by any authenticated user.") {
+  user_insertMany(data: [
+    {
+      id: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+      displayName: "Alice Smith",
+      email: "alice.smith@example.com",
+      profilePictureUrl: "https://example.com/alice.jpg",
+      bio: "Collector of rare stamps.",
+      location: "New York, USA",
+      createdAt: "2023-01-01T10:00:00Z"
+    },
+    {
+      id: "b1fcc1a0-7f2a-4a8b-9e0c-0f1d2e3c4b5a",
+      displayName: "Bob Johnson",
+      email: "bob.johnson@example.com",
+      profilePictureUrl: "https://example.com/bob.jpg",
+      bio: "Vintage comic book enthusiast.",
+      location: "London, UK",
+      createdAt: "2023-01-02T11:00:00Z"
+    }
+  ])
+  item_insertMany(data: [
+    {
+      id: "c2a3d4e5-5f6a-4b7c-8d9e-0a1b2c3d4e5f",
+      owner: {id: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"},
+      name: "Rare 1840 Penny Black Stamp",
+      description: "First adhesive postage stamp in the world.",
+      acquisitionDate: "2023-01-15",
+      yearOfOrigin: 1840,
+      condition: "Excellent",
+      provenance: "Acquired from Sotheby's auction",
+      value: 3500.00,
+      forTrade: false,
+      forSalePrice: 4000.00,
+      isPublic: true,
+      createdAt: "2023-01-15T14:30:00Z"
+    },
+    {
+      id: "d3b4c5d6-6e7f-4a8b-9c0d-1e2f3a4b5c6d",
+      owner: {id: "b1fcc1a0-7f2a-4a8b-9e0c-0f1d2e3c4b5a"},
+      name: "Amazing Fantasy #15 (1962)",
+      description: "First appearance of Spider-Man. Graded 7.0 by CGC.",
+      acquisitionDate: "2023-02-01",
+      yearOfOrigin: 1962,
+      condition: "Very Fine",
+      provenance: "Private collection sale",
+      value: 120000.00,
+      forTrade: true,
+      forSalePrice: null,
+      isPublic: true,
+      createdAt: "2023-02-01T10:00:00Z"
+    },
+    {
+      id: "e4c5d6e7-7a8b-4c9d-ae0f-2b3c4d5e6f7a",
+      owner: {id: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"},
+      name: "1933 Double Eagle Coin",
+      description: "Extremely rare US gold coin. Only a few known to exist.",
+      acquisitionDate: "2023-03-10",
+      yearOfOrigin: 1933,
+      condition: "Uncirculated",
+      provenance: "Heritage Auctions",
+      value: 18900000.00,
+      forTrade: false,
+      forSalePrice: null,
+      isPublic: false,
+      createdAt: "2023-03-10T09:00:00Z"
+    }
+  ])
+  photo_insertMany(data: [
+    {
+      id: "f5d6e7f8-8b9c-4d0e-af10-3c4d5e6f7a8b",
+      item: {id: "c2a3d4e5-5f6a-4b7c-8d9e-0a1b2c3d4e5f"},
+      imageUrl: "https://example.com/penny_black_front.jpg",
+      caption: "Front view of the Penny Black stamp.",
+      order: 1,
+      createdAt: "2023-01-16T08:00:00Z"
+    },
+    {
+      id: "0a1b2c3d-1e2f-4a3b-8c4d-5e6f7a8b9c0d",
+      item: {id: "d3b4c5d6-6e7f-4a8b-9c0d-1e2f3a4b5c6d"},
+      imageUrl: "https://example.com/amazing_fantasy_cover.jpg",
+      caption: "Cover of Amazing Fantasy #15.",
+      order: 1,
+      createdAt: "2023-02-02T12:00:00Z"
+    }
+  ])
+  showcase_insertMany(data: [
+    {
+      id: "1b2c3d4e-2f3a-4b5c-6d7e-8f9a0b1c2d3e",
+      owner: {id: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"},
+      name: "Alice's Philatelic Wonders",
+      description: "A collection of Alice's most prized postage stamps.",
+      isPublic: true,
+      createdAt: "2023-01-20T16:00:00Z"
+    },
+    {
+      id: "2c3d4e5f-3a4b-5c6d-7e8f-9a0b1c2d3e4f",
+      owner: {id: "b1fcc1a0-7f2a-4a8b-9e0c-0f1d2e3c4b5a"},
+      name: "Bob's Comic Book Showcase",
+      description: "Bob's favorite vintage comic books, featuring key issues.",
+      isPublic: false,
+      createdAt: "2023-02-10T14:00:00Z"
+    }
+  ])
+  showcaseItem_insertMany(data: [
+    {
+      showcase: {id: "1b2c3d4e-2f3a-4b5c-6d7e-8f9a0b1c2d3e"},
+      item: {id: "c2a3d4e5-5f6a-4b7c-8d9e-0a1b2c3d4e5f"},
+      addedAt: "2023-01-21T09:00:00Z",
+      note: "Centerpiece of my stamp collection."
+    },
+    {
+      showcase: {id: "2c3d4e5f-3a4b-5c6d-7e8f-9a0b1c2d3e4f"},
+      item: {id: "d3b4c5d6-6e7f-4a8b-9c0d-1e2f3a4b5c6d"},
+      addedAt: "2023-02-11T10:00:00Z",
+      note: "My most valuable comic book."
+    }
+  ])
+}

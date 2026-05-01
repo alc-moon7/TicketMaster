@@ -1,0 +1,70 @@
+query ListPublicItems @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  items(where: {isPublic: {eq: true}}) {
+    id
+    name
+    description
+    acquisitionDate
+    yearOfOrigin
+    condition
+    provenance
+    value
+    forTrade
+    forSalePrice
+    isPublic
+    owner {
+      displayName
+    }
+    photos_on_item {
+      imageUrl
+      caption
+    }
+  }
+}
+
+query GetMyShowcases @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  showcases(where: {owner: {id_expr: "auth.uid"}}) {
+    id
+    name
+    description
+    isPublic
+    createdAt
+    showcaseItems_on_showcase {
+      item {
+        name
+        acquisitionDate
+      }
+    }
+  }
+}
+
+mutation AddItemToShowcase($showcaseId: UUID!, $itemId: UUID!, $note: String) @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  showcaseItem_insert(data: {
+    showcase: {id: $showcaseId},
+    item: {id: $itemId},
+    addedAt_expr: "request.time",
+    note: $note
+  }) {
+    showcaseId
+    itemId
+  }
+}
+
+mutation CreateNewItem($name: String!, $description: String!, $acquisitionDate: Date!, $isPublic: Boolean!, $yearOfOrigin: Int, $condition: String, $provenance: String, $value: Float, $forTrade: Boolean, $forSalePrice: Float) @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  item_insert(data: {
+    ownerId_expr: "auth.uid",
+    name: $name,
+    description: $description,
+    acquisitionDate: $acquisitionDate,
+    isPublic: $isPublic,
+    yearOfOrigin: $yearOfOrigin,
+    condition: $condition,
+    provenance: $provenance,
+    value: $value,
+    forTrade: $forTrade,
+    forSalePrice: $forSalePrice,
+    createdAt_expr: "request.time"
+  }) {
+    id
+    name
+  }
+}
