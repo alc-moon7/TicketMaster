@@ -1,0 +1,54 @@
+[
+    {
+        "merged": "com.ticketmaster.mobile.android.app-debug-39:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.ticketmaster.mobile.android.app-main-34:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.ticketmaster.mobile.android.app-debug-39:/drawable-v21_launch_background.xml.flat",
+        "source": "com.ticketmaster.mobile.android.app-main-34:/drawable-v21/launch_background.xml"
+    },
+    {
+        "merged": "com.ticketmaster.mobile.android.app-debug-39:/drawable-mdpi_ic_launcher_foreground.png.flat",
+        "source": "com.ticketmaster.mobile.android.app-main-34:/drawable-mdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.ticketmaster.mobile.android.app-debug-39:/drawable-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.ticketmaster.mobile.android.app-main-34:/drawable-xhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.ticketmaster.mobile.android.app-debug-39:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.ticketmaster.mobile.android.app-main-34:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.ticketmaster.mobile.android.app-debug-39:/drawable-hdpi_ic_launcher_foreground.png.flat",
+        "source": "com.ticketmaster.mobile.android.app-main-34:/drawable-hdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.ticketmaster.mobile.android.app-debug-39:/drawable-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.ticketmaster.mobile.android.app-main-34:/drawable-xxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.ticketmaster.mobile.android.app-debug-39:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.ticketmaster.mobile.android.app-main-34:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.ticketmaster.mobile.android.app-debug-39:/drawable-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.ticketmaster.mobile.android.app-main-34:/drawable-xxxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.ticketmaster.mobile.android.app-debug-39:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.ticketmaster.mobile.android.app-main-34:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.ticketmaster.mobile.android.app-debug-39:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.ticketmaster.mobile.android.app-main-34:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.ticketmaster.mobile.android.app-debug-39:/xml_ticket_file_paths.xml.flat",
+        "source": "com.ticketmaster.mobile.android.app-main-34:/xml/ticket_file_paths.xml"
+    },
+    {
+        "merged": "com.ticketmaster.mobile.android.app-debug-39:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.ticketmaster.mobile.android.app-main-34:/mipmap-xhdpi/ic_launcher.png"
+    }
+]

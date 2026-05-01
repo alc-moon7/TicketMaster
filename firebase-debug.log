@@ -1,0 +1,285 @@
+[debug] [2026-03-16T12:40:23.799Z] ----------------------------------------------------------------------
+[debug] [2026-03-16T12:40:23.801Z] Command:       /usr/bin/node /usr/bin/firebase projects:list --json
+[debug] [2026-03-16T12:40:23.801Z] CLI Version:   15.10.0
+[debug] [2026-03-16T12:40:23.801Z] Platform:      linux
+[debug] [2026-03-16T12:40:23.801Z] Node Version:  v20.20.1
+[debug] [2026-03-16T12:40:23.801Z] Time:          Mon Mar 16 2026 18:40:23 GMT+0600 (Bangladesh Standard Time)
+[debug] [2026-03-16T12:40:23.801Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-03-16T12:40:24.016Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"flutter"}
+[debug] [2026-03-16T12:40:24.044Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T12:40:24.044Z] > authorizing via signed-in user (eticketmasterz@gmail.com)
+[debug] [2026-03-16T12:40:24.046Z] Checked if tokens are valid: false, expires at: 1773664182153
+[debug] [2026-03-16T12:40:24.046Z] Checked if tokens are valid: false, expires at: 1773664182153
+[debug] [2026-03-16T12:40:24.047Z] > refreshing access token with scopes: []
+[debug] [2026-03-16T12:40:24.048Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-03-16T12:40:24.048Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-16T12:40:24.490Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-03-16T12:40:24.491Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-16T12:40:24.498Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2026-03-16T12:40:25.381Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-03-16T12:40:25.381Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] ┌──────────────────────┬────────────────────┬────────────────┬──────────────────────┐
+│ Project Display Name │ Project ID         │ Project Number │ Resource Location ID │
+├──────────────────────┼────────────────────┼────────────────┼──────────────────────┤
+│ TicketMaster         │ ticketmaster-61fd5 │ 876939743947   │ [Not specified]      │
+└──────────────────────┴────────────────────┴────────────────┴──────────────────────┘
+[info] 
+[info] 1 project(s) total.
+[debug] [2026-03-16T12:40:26.451Z] ----------------------------------------------------------------------
+[debug] [2026-03-16T12:40:26.467Z] Command:       /usr/bin/node /usr/bin/firebase apps:list android --json --project=ticketmaster-61fd5
+[debug] [2026-03-16T12:40:26.467Z] CLI Version:   15.10.0
+[debug] [2026-03-16T12:40:26.467Z] Platform:      linux
+[debug] [2026-03-16T12:40:26.467Z] Node Version:  v20.20.1
+[debug] [2026-03-16T12:40:26.468Z] Time:          Mon Mar 16 2026 18:40:26 GMT+0600 (Bangladesh Standard Time)
+[debug] [2026-03-16T12:40:26.468Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-03-16T12:40:28.881Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"flutter"}
+[debug] [2026-03-16T12:40:28.900Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T12:40:28.901Z] > authorizing via signed-in user (eticketmasterz@gmail.com)
+[debug] [2026-03-16T12:40:28.906Z] Checked if tokens are valid: true, expires at: 1773668423491
+[debug] [2026-03-16T12:40:28.906Z] Checked if tokens are valid: true, expires at: 1773668423491
+[debug] [2026-03-16T12:40:28.908Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/ticketmaster-61fd5/androidApps pageSize=100
+[debug] [2026-03-16T12:40:29.600Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/ticketmaster-61fd5/androidApps 200
+[debug] [2026-03-16T12:40:29.600Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/ticketmaster-61fd5/androidApps {"apps":[{"name":"projects/ticketmaster-61fd5/androidApps/1:876939743947:android:607838fb268c93bf43414e","appId":"1:876939743947:android:607838fb268c93bf43414e","displayName":"ticketmaster (android)","projectId":"ticketmaster-61fd5","packageName":"com.ticketmaster.mobile.android","apiKeyId":"0a7f7f68-8be5-4301-b8fe-e132004496c2","state":"ACTIVE","expireTime":"1970-01-01T00:00:00Z","etag":"1_6c3fa168-2b79-4543-bb37-1d1e3d7ce212"}]}
+[info] ┌────────────────────────┬───────────────────────────────────────────────┬──────────┐
+│ App Display Name       │ App ID                                        │ Platform │
+├────────────────────────┼───────────────────────────────────────────────┼──────────┤
+│ ticketmaster (android) │ 1:876939743947:android:607838fb268c93bf43414e │ ANDROID  │
+└────────────────────────┴───────────────────────────────────────────────┴──────────┘
+[info] 
+[info] 1 app(s) total.
+[debug] [2026-03-16T12:40:30.276Z] ----------------------------------------------------------------------
+[debug] [2026-03-16T12:40:30.278Z] Command:       /usr/bin/node /usr/bin/firebase apps:sdkconfig android 1:876939743947:android:607838fb268c93bf43414e --json
+[debug] [2026-03-16T12:40:30.278Z] CLI Version:   15.10.0
+[debug] [2026-03-16T12:40:30.278Z] Platform:      linux
+[debug] [2026-03-16T12:40:30.278Z] Node Version:  v20.20.1
+[debug] [2026-03-16T12:40:30.279Z] Time:          Mon Mar 16 2026 18:40:30 GMT+0600 (Bangladesh Standard Time)
+[debug] [2026-03-16T12:40:30.279Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-03-16T12:40:30.502Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"flutter"}
+[debug] [2026-03-16T12:40:30.504Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T12:40:30.504Z] > authorizing via signed-in user (eticketmasterz@gmail.com)
+[debug] [2026-03-16T12:40:30.508Z] Checked if tokens are valid: true, expires at: 1773668423491
+[debug] [2026-03-16T12:40:30.508Z] Checked if tokens are valid: true, expires at: 1773668423491
+[debug] [2026-03-16T12:40:30.509Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/androidApps/1:876939743947:android:607838fb268c93bf43414e/config [none]
+[debug] [2026-03-16T12:40:32.426Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/androidApps/1:876939743947:android:607838fb268c93bf43414e/config 200
+[debug] [2026-03-16T12:40:32.426Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/androidApps/1:876939743947:android:607838fb268c93bf43414e/config {"configFilename":"google-services.json","configFileContents":"ewogICJwcm9qZWN0X2luZm8iOiB7CiAgICAicHJvamVjdF9udW1iZXIiOiAiODc2OTM5NzQzOTQ3IiwKICAgICJwcm9qZWN0X2lkIjogInRpY2tldG1hc3Rlci02MWZkNSIsCiAgICAic3RvcmFnZV9idWNrZXQiOiAidGlja2V0bWFzdGVyLTYxZmQ1LmZpcmViYXNlc3RvcmFnZS5hcHAiCiAgfSwKICAiY2xpZW50IjogWwogICAgewogICAgICAiY2xpZW50X2luZm8iOiB7CiAgICAgICAgIm1vYmlsZXNka19hcHBfaWQiOiAiMTo4NzY5Mzk3NDM5NDc6YW5kcm9pZDo2MDc4MzhmYjI2OGM5M2JmNDM0MTRlIiwKICAgICAgICAiYW5kcm9pZF9jbGllbnRfaW5mbyI6IHsKICAgICAgICAgICJwYWNrYWdlX25hbWUiOiAiY29tLnRpY2tldG1hc3Rlci5tb2JpbGUuYW5kcm9pZCIKICAgICAgICB9CiAgICAgIH0sCiAgICAgICJvYXV0aF9jbGllbnQiOiBbXSwKICAgICAgImFwaV9rZXkiOiBbCiAgICAgICAgewogICAgICAgICAgImN1cnJlbnRfa2V5IjogIkFJemFTeUR2c3VWdElSRW1WbkVMU2pfdHl2Q0ZOdDhkSW5WNkZFRSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJzZXJ2aWNlcyI6IHsKICAgICAgICAiYXBwaW52aXRlX3NlcnZpY2UiOiB7CiAgICAgICAgICAib3RoZXJfcGxhdGZvcm1fb2F1dGhfY2xpZW50IjogW10KICAgICAgICB9CiAgICAgIH0KICAgIH0KICBdLAogICJjb25maWd1cmF0aW9uX3ZlcnNpb24iOiAiMSIKfQ=="}
+[info] {
+  "project_info": {
+    "project_number": "876939743947",
+    "project_id": "ticketmaster-61fd5",
+    "storage_bucket": "ticketmaster-61fd5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876939743947:android:607838fb268c93bf43414e",
+        "android_client_info": {
+          "package_name": "com.ticketmaster.mobile.android"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvsuVtIREmVnELSj_tyvCFNt8dInV6FEE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
+[debug] [2026-03-16T12:41:20.873Z] ----------------------------------------------------------------------
+[debug] [2026-03-16T12:41:20.879Z] Command:       /usr/bin/node /usr/bin/firebase apps:list --project ticketmaster-61fd5
+[debug] [2026-03-16T12:41:20.879Z] CLI Version:   15.10.0
+[debug] [2026-03-16T12:41:20.880Z] Platform:      linux
+[debug] [2026-03-16T12:41:20.880Z] Node Version:  v20.20.1
+[debug] [2026-03-16T12:41:20.880Z] Time:          Mon Mar 16 2026 18:41:20 GMT+0600 (Bangladesh Standard Time)
+[debug] [2026-03-16T12:41:20.880Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-03-16T12:41:21.111Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"flutter"}
+[debug] [2026-03-16T12:41:21.114Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T12:41:21.114Z] > authorizing via signed-in user (eticketmasterz@gmail.com)
+[debug] [2026-03-16T12:41:21.117Z] Checked if tokens are valid: true, expires at: 1773668423491
+[debug] [2026-03-16T12:41:21.117Z] Checked if tokens are valid: true, expires at: 1773668423491
+[debug] [2026-03-16T12:41:21.119Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/ticketmaster-61fd5:searchApps pageSize=100
+[debug] [2026-03-16T12:41:21.947Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/ticketmaster-61fd5:searchApps 200
+[debug] [2026-03-16T12:41:21.947Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/ticketmaster-61fd5:searchApps {"apps":[{"name":"projects/ticketmaster-61fd5/androidApps/1:876939743947:android:607838fb268c93bf43414e","displayName":"ticketmaster (android)","platform":"ANDROID","appId":"1:876939743947:android:607838fb268c93bf43414e","namespace":"com.ticketmaster.mobile.android","apiKeyId":"0a7f7f68-8be5-4301-b8fe-e132004496c2","state":"ACTIVE","expireTime":"1970-01-01T00:00:00Z"},{"name":"projects/ticketmaster-61fd5/iosApps/1:876939743947:ios:c22fb59bb400f3d343414e","displayName":"ticketmaster (ios)","platform":"IOS","appId":"1:876939743947:ios:c22fb59bb400f3d343414e","namespace":"com.example.ticketmaster","apiKeyId":"f35d56b2-1a70-4474-b5a2-40aae193b65f","state":"ACTIVE","expireTime":"1970-01-01T00:00:00Z"},{"name":"projects/ticketmaster-61fd5/webApps/1:876939743947:web:234965c478aa88a543414e","displayName":"ticketmaster (windows)","platform":"WEB","appId":"1:876939743947:web:234965c478aa88a543414e","namespace":"YjE5OTI5MTMtZjkyOC00MmY2LWE2YTQtYjJlZWMxMDg3NTRl","apiKeyId":"f4e3204a-ae1f-4ee8-9703-5e18814e2d02","state":"ACTIVE","expireTime":"1970-01-01T00:00:00Z"},{"name":"projects/ticketmaster-61fd5/webApps/1:876939743947:web:f42215d3f0d9b86043414e","displayName":"ticketmaster (web)","platform":"WEB","appId":"1:876939743947:web:f42215d3f0d9b86043414e","namespace":"OTQ0ZjYzOWQtMzIwOC00MDMxLTk1ODItZDZmNGNlNWNhZDlj","apiKeyId":"f4e3204a-ae1f-4ee8-9703-5e18814e2d02","state":"ACTIVE","expireTime":"1970-01-01T00:00:00Z"}]}
+[info] ┌────────────────────────┬───────────────────────────────────────────────┬──────────┐
+│ App Display Name       │ App ID                                        │ Platform │
+├────────────────────────┼───────────────────────────────────────────────┼──────────┤
+│ ticketmaster (android) │ 1:876939743947:android:607838fb268c93bf43414e │ ANDROID  │
+├────────────────────────┼───────────────────────────────────────────────┼──────────┤
+│ ticketmaster (ios)     │ 1:876939743947:ios:c22fb59bb400f3d343414e     │ IOS      │
+├────────────────────────┼───────────────────────────────────────────────┼──────────┤
+│ ticketmaster (windows) │ 1:876939743947:web:234965c478aa88a543414e     │ WEB      │
+├────────────────────────┼───────────────────────────────────────────────┼──────────┤
+│ ticketmaster (web)     │ 1:876939743947:web:f42215d3f0d9b86043414e     │ WEB      │
+└────────────────────────┴───────────────────────────────────────────────┴──────────┘
+[info] 
+[info] 4 app(s) total.
+[debug] [2026-03-16T12:41:40.350Z] ----------------------------------------------------------------------
+[debug] [2026-03-16T12:41:40.351Z] Command:       /usr/bin/node /usr/bin/firebase projects:list --json
+[debug] [2026-03-16T12:41:40.351Z] CLI Version:   15.10.0
+[debug] [2026-03-16T12:41:40.352Z] Platform:      linux
+[debug] [2026-03-16T12:41:40.352Z] Node Version:  v20.20.1
+[debug] [2026-03-16T12:41:40.352Z] Time:          Mon Mar 16 2026 18:41:40 GMT+0600 (Bangladesh Standard Time)
+[debug] [2026-03-16T12:41:40.352Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-03-16T12:41:40.527Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"flutter"}
+[debug] [2026-03-16T12:41:40.529Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T12:41:40.529Z] > authorizing via signed-in user (eticketmasterz@gmail.com)
+[debug] [2026-03-16T12:41:40.532Z] Checked if tokens are valid: true, expires at: 1773668423491
+[debug] [2026-03-16T12:41:40.532Z] Checked if tokens are valid: true, expires at: 1773668423491
+[debug] [2026-03-16T12:41:40.533Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2026-03-16T12:41:41.795Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-03-16T12:41:41.795Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] ┌──────────────────────┬────────────────────┬────────────────┬──────────────────────┐
+│ Project Display Name │ Project ID         │ Project Number │ Resource Location ID │
+├──────────────────────┼────────────────────┼────────────────┼──────────────────────┤
+│ TicketMaster         │ ticketmaster-61fd5 │ 876939743947   │ [Not specified]      │
+└──────────────────────┴────────────────────┴────────────────┴──────────────────────┘
+[info] 
+[info] 1 project(s) total.
+[debug] [2026-03-16T12:41:42.548Z] ----------------------------------------------------------------------
+[debug] [2026-03-16T12:41:42.550Z] Command:       /usr/bin/node /usr/bin/firebase apps:list android --json --project=ticketmaster-61fd5
+[debug] [2026-03-16T12:41:42.550Z] CLI Version:   15.10.0
+[debug] [2026-03-16T12:41:42.550Z] Platform:      linux
+[debug] [2026-03-16T12:41:42.550Z] Node Version:  v20.20.1
+[debug] [2026-03-16T12:41:42.550Z] Time:          Mon Mar 16 2026 18:41:42 GMT+0600 (Bangladesh Standard Time)
+[debug] [2026-03-16T12:41:42.550Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-03-16T12:41:42.748Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"flutter"}
+[debug] [2026-03-16T12:41:42.750Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T12:41:42.750Z] > authorizing via signed-in user (eticketmasterz@gmail.com)
+[debug] [2026-03-16T12:41:42.752Z] Checked if tokens are valid: true, expires at: 1773668423491
+[debug] [2026-03-16T12:41:42.752Z] Checked if tokens are valid: true, expires at: 1773668423491
+[debug] [2026-03-16T12:41:42.754Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/ticketmaster-61fd5/androidApps pageSize=100
+[debug] [2026-03-16T12:41:43.731Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/ticketmaster-61fd5/androidApps 200
+[debug] [2026-03-16T12:41:43.732Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/ticketmaster-61fd5/androidApps {"apps":[{"name":"projects/ticketmaster-61fd5/androidApps/1:876939743947:android:607838fb268c93bf43414e","appId":"1:876939743947:android:607838fb268c93bf43414e","displayName":"ticketmaster (android)","projectId":"ticketmaster-61fd5","packageName":"com.ticketmaster.mobile.android","apiKeyId":"0a7f7f68-8be5-4301-b8fe-e132004496c2","state":"ACTIVE","expireTime":"1970-01-01T00:00:00Z","etag":"1_6c3fa168-2b79-4543-bb37-1d1e3d7ce212"}]}
+[info] ┌────────────────────────┬───────────────────────────────────────────────┬──────────┐
+│ App Display Name       │ App ID                                        │ Platform │
+├────────────────────────┼───────────────────────────────────────────────┼──────────┤
+│ ticketmaster (android) │ 1:876939743947:android:607838fb268c93bf43414e │ ANDROID  │
+└────────────────────────┴───────────────────────────────────────────────┴──────────┘
+[info] 
+[info] 1 app(s) total.
+[debug] [2026-03-16T12:41:45.053Z] ----------------------------------------------------------------------
+[debug] [2026-03-16T12:41:45.055Z] Command:       /usr/bin/node /usr/bin/firebase apps:sdkconfig android 1:876939743947:android:607838fb268c93bf43414e --json
+[debug] [2026-03-16T12:41:45.055Z] CLI Version:   15.10.0
+[debug] [2026-03-16T12:41:45.056Z] Platform:      linux
+[debug] [2026-03-16T12:41:45.056Z] Node Version:  v20.20.1
+[debug] [2026-03-16T12:41:45.056Z] Time:          Mon Mar 16 2026 18:41:45 GMT+0600 (Bangladesh Standard Time)
+[debug] [2026-03-16T12:41:45.056Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-03-16T12:41:45.258Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"flutter"}
+[debug] [2026-03-16T12:41:45.260Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T12:41:45.260Z] > authorizing via signed-in user (eticketmasterz@gmail.com)
+[debug] [2026-03-16T12:41:45.262Z] Checked if tokens are valid: true, expires at: 1773668423491
+[debug] [2026-03-16T12:41:45.262Z] Checked if tokens are valid: true, expires at: 1773668423491
+[debug] [2026-03-16T12:41:45.263Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/androidApps/1:876939743947:android:607838fb268c93bf43414e/config [none]
+[debug] [2026-03-16T12:41:47.316Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/androidApps/1:876939743947:android:607838fb268c93bf43414e/config 200
+[debug] [2026-03-16T12:41:47.317Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/androidApps/1:876939743947:android:607838fb268c93bf43414e/config {"configFilename":"google-services.json","configFileContents":"ewogICJwcm9qZWN0X2luZm8iOiB7CiAgICAicHJvamVjdF9udW1iZXIiOiAiODc2OTM5NzQzOTQ3IiwKICAgICJwcm9qZWN0X2lkIjogInRpY2tldG1hc3Rlci02MWZkNSIsCiAgICAic3RvcmFnZV9idWNrZXQiOiAidGlja2V0bWFzdGVyLTYxZmQ1LmZpcmViYXNlc3RvcmFnZS5hcHAiCiAgfSwKICAiY2xpZW50IjogWwogICAgewogICAgICAiY2xpZW50X2luZm8iOiB7CiAgICAgICAgIm1vYmlsZXNka19hcHBfaWQiOiAiMTo4NzY5Mzk3NDM5NDc6YW5kcm9pZDo2MDc4MzhmYjI2OGM5M2JmNDM0MTRlIiwKICAgICAgICAiYW5kcm9pZF9jbGllbnRfaW5mbyI6IHsKICAgICAgICAgICJwYWNrYWdlX25hbWUiOiAiY29tLnRpY2tldG1hc3Rlci5tb2JpbGUuYW5kcm9pZCIKICAgICAgICB9CiAgICAgIH0sCiAgICAgICJvYXV0aF9jbGllbnQiOiBbXSwKICAgICAgImFwaV9rZXkiOiBbCiAgICAgICAgewogICAgICAgICAgImN1cnJlbnRfa2V5IjogIkFJemFTeUR2c3VWdElSRW1WbkVMU2pfdHl2Q0ZOdDhkSW5WNkZFRSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJzZXJ2aWNlcyI6IHsKICAgICAgICAiYXBwaW52aXRlX3NlcnZpY2UiOiB7CiAgICAgICAgICAib3RoZXJfcGxhdGZvcm1fb2F1dGhfY2xpZW50IjogW10KICAgICAgICB9CiAgICAgIH0KICAgIH0KICBdLAogICJjb25maWd1cmF0aW9uX3ZlcnNpb24iOiAiMSIKfQ=="}
+[info] {
+  "project_info": {
+    "project_number": "876939743947",
+    "project_id": "ticketmaster-61fd5",
+    "storage_bucket": "ticketmaster-61fd5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876939743947:android:607838fb268c93bf43414e",
+        "android_client_info": {
+          "package_name": "com.ticketmaster.mobile.android"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvsuVtIREmVnELSj_tyvCFNt8dInV6FEE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
+[debug] [2026-03-16T12:41:48.095Z] ----------------------------------------------------------------------
+[debug] [2026-03-16T12:41:48.097Z] Command:       /usr/bin/node /usr/bin/firebase apps:list ios --json --project=ticketmaster-61fd5
+[debug] [2026-03-16T12:41:48.098Z] CLI Version:   15.10.0
+[debug] [2026-03-16T12:41:48.098Z] Platform:      linux
+[debug] [2026-03-16T12:41:48.098Z] Node Version:  v20.20.1
+[debug] [2026-03-16T12:41:48.098Z] Time:          Mon Mar 16 2026 18:41:48 GMT+0600 (Bangladesh Standard Time)
+[debug] [2026-03-16T12:41:48.098Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-03-16T12:41:48.288Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"flutter"}
+[debug] [2026-03-16T12:41:48.291Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T12:41:48.292Z] > authorizing via signed-in user (eticketmasterz@gmail.com)
+[debug] [2026-03-16T12:41:48.294Z] Checked if tokens are valid: true, expires at: 1773668423491
+[debug] [2026-03-16T12:41:48.294Z] Checked if tokens are valid: true, expires at: 1773668423491
+[debug] [2026-03-16T12:41:48.296Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/ticketmaster-61fd5/iosApps pageSize=100
+[debug] [2026-03-16T12:41:49.979Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/ticketmaster-61fd5/iosApps 200
+[debug] [2026-03-16T12:41:49.980Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/ticketmaster-61fd5/iosApps {"apps":[{"name":"projects/ticketmaster-61fd5/iosApps/1:876939743947:ios:c22fb59bb400f3d343414e","appId":"1:876939743947:ios:c22fb59bb400f3d343414e","displayName":"ticketmaster (ios)","projectId":"ticketmaster-61fd5","bundleId":"com.example.ticketmaster","apiKeyId":"f35d56b2-1a70-4474-b5a2-40aae193b65f","state":"ACTIVE","expireTime":"1970-01-01T00:00:00Z","etag":"1_b3710391-d351-4407-9f41-e9b837e00c6d"}]}
+[info] ┌────────────────────┬───────────────────────────────────────────┬──────────┐
+│ App Display Name   │ App ID                                    │ Platform │
+├────────────────────┼───────────────────────────────────────────┼──────────┤
+│ ticketmaster (ios) │ 1:876939743947:ios:c22fb59bb400f3d343414e │ IOS      │
+└────────────────────┴───────────────────────────────────────────┴──────────┘
+[info] 
+[info] 1 app(s) total.
+[debug] [2026-03-16T12:41:50.755Z] ----------------------------------------------------------------------
+[debug] [2026-03-16T12:41:50.757Z] Command:       /usr/bin/node /usr/bin/firebase apps:sdkconfig ios 1:876939743947:ios:c22fb59bb400f3d343414e --json
+[debug] [2026-03-16T12:41:50.757Z] CLI Version:   15.10.0
+[debug] [2026-03-16T12:41:50.757Z] Platform:      linux
+[debug] [2026-03-16T12:41:50.757Z] Node Version:  v20.20.1
+[debug] [2026-03-16T12:41:50.757Z] Time:          Mon Mar 16 2026 18:41:50 GMT+0600 (Bangladesh Standard Time)
+[debug] [2026-03-16T12:41:50.758Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-03-16T12:41:50.945Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"flutter"}
+[debug] [2026-03-16T12:41:50.947Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T12:41:50.947Z] > authorizing via signed-in user (eticketmasterz@gmail.com)
+[debug] [2026-03-16T12:41:50.949Z] Checked if tokens are valid: true, expires at: 1773668423491
+[debug] [2026-03-16T12:41:50.949Z] Checked if tokens are valid: true, expires at: 1773668423491
+[debug] [2026-03-16T12:41:50.950Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/iosApps/1:876939743947:ios:c22fb59bb400f3d343414e/config [none]
+[debug] [2026-03-16T12:41:52.957Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/iosApps/1:876939743947:ios:c22fb59bb400f3d343414e/config 200
+[debug] [2026-03-16T12:41:52.957Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/iosApps/1:876939743947:ios:c22fb59bb400f3d343414e/config {"configFilename":"GoogleService-Info.plist","configFileContents":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCFET0NUWVBFIHBsaXN0IFBVQkxJQyAiLS8vQXBwbGUvL0RURCBQTElTVCAxLjAvL0VOIiAiaHR0cDovL3d3dy5hcHBsZS5jb20vRFREcy9Qcm9wZXJ0eUxpc3QtMS4wLmR0ZCI+CjxwbGlzdCB2ZXJzaW9uPSIxLjAiPgo8ZGljdD4KCTxrZXk+QVBJX0tFWTwva2V5PgoJPHN0cmluZz5BSXphU3lBa2o3OURwMUs2WlBnLU5WdnNOWHpfdWZia3dyY0pQWjA8L3N0cmluZz4KCTxrZXk+R0NNX1NFTkRFUl9JRDwva2V5PgoJPHN0cmluZz44NzY5Mzk3NDM5NDc8L3N0cmluZz4KCTxrZXk+UExJU1RfVkVSU0lPTjwva2V5PgoJPHN0cmluZz4xPC9zdHJpbmc+Cgk8a2V5PkJVTkRMRV9JRDwva2V5PgoJPHN0cmluZz5jb20uZXhhbXBsZS50aWNrZXRtYXN0ZXI8L3N0cmluZz4KCTxrZXk+UFJPSkVDVF9JRDwva2V5PgoJPHN0cmluZz50aWNrZXRtYXN0ZXItNjFmZDU8L3N0cmluZz4KCTxrZXk+U1RPUkFHRV9CVUNLRVQ8L2tleT4KCTxzdHJpbmc+dGlja2V0bWFzdGVyLTYxZmQ1LmZpcmViYXNlc3RvcmFnZS5hcHA8L3N0cmluZz4KCTxrZXk+SVNfQURTX0VOQUJMRUQ8L2tleT4KCTxmYWxzZT48L2ZhbHNlPgoJPGtleT5JU19BTkFMWVRJQ1NfRU5BQkxFRDwva2V5PgoJPGZhbHNlPjwvZmFsc2U+Cgk8a2V5PklTX0FQUElOVklURV9FTkFCTEVEPC9rZXk+Cgk8dHJ1ZT48L3RydWU+Cgk8a2V5PklTX0dDTV9FTkFCTEVEPC9rZXk+Cgk8dHJ1ZT48L3RydWU+Cgk8a2V5PklTX1NJR05JTl9FTkFCTEVEPC9rZXk+Cgk8dHJ1ZT48L3RydWU+Cgk8a2V5PkdPT0dMRV9BUFBfSUQ8L2tleT4KCTxzdHJpbmc+MTo4NzY5Mzk3NDM5NDc6aW9zOmMyMmZiNTliYjQwMGYzZDM0MzQxNGU8L3N0cmluZz4KPC9kaWN0Pgo8L3BsaXN0Pg=="}
+[info] <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAkj79Dp1K6ZPg-NVvsNXz_ufbkwrcJPZ0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>876939743947</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.ticketmaster</string>
+	<key>PROJECT_ID</key>
+	<string>ticketmaster-61fd5</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ticketmaster-61fd5.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:876939743947:ios:c22fb59bb400f3d343414e</string>
+</dict>
+</plist>

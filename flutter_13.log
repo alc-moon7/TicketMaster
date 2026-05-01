@@ -1,0 +1,95 @@
+Flutter crash report.
+Please report a bug at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter pub get
+
+## exception
+
+PathAccessException: PathAccessException: Cannot create link, path = '/media/moon-ahmed/Program/Ticketmaster/windows/flutter/ephemeral/.plugin_symlinks/cloud_firestore' (OS Error: Operation not permitted, errno = 1)
+
+```
+#0      _Link.throwIfError (dart:io/link.dart:358:7)
+#1      _Link.createSync (dart:io/link.dart:276:5)
+#2      ForwardingLink.createSync (package:file/src/forwarding/forwarding_link.dart:20:16)
+#3      ForwardingLink.createSync (package:file/src/forwarding/forwarding_link.dart:20:16)
+#4      _createPlatformPluginSymlinks (package:flutter_tools/src/flutter_plugins.dart:1143:12)
+#5      createPluginSymlinks (package:flutter_tools/src/flutter_plugins.dart:1060:5)
+#6      refreshPluginsList (package:flutter_tools/src/flutter_plugins.dart:1192:5)
+<asynchronous suspension>
+#7      FlutterProject.ensureReadyForPlatformSpecificTooling (package:flutter_tools/src/project.dart:401:5)
+<asynchronous suspension>
+#8      PackagesGetCommand.runCommand (package:flutter_tools/src/commands/packages.dart:395:9)
+<asynchronous suspension>
+#9      FlutterCommand.run.<anonymous closure> (package:flutter_tools/src/runner/flutter_command.dart:1590:27)
+<asynchronous suspension>
+#10     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:154:19)
+<asynchronous suspension>
+#11     CommandRunner.runCommand (package:args/command_runner.dart:212:13)
+<asynchronous suspension>
+#12     FlutterCommandRunner.runCommand.<anonymous closure> (package:flutter_tools/src/runner/flutter_command_runner.dart:496:9)
+<asynchronous suspension>
+#13     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:154:19)
+<asynchronous suspension>
+#14     FlutterCommandRunner.runCommand (package:flutter_tools/src/runner/flutter_command_runner.dart:431:5)
+<asynchronous suspension>
+#15     FlutterCommandRunner.run.<anonymous closure> (package:flutter_tools/src/runner/flutter_command_runner.dart:307:33)
+<asynchronous suspension>
+#16     run.<anonymous closure>.<anonymous closure> (package:flutter_tools/runner.dart:104:11)
+<asynchronous suspension>
+#17     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:154:19)
+<asynchronous suspension>
+#18     main (package:flutter_tools/executable.dart:103:3)
+<asynchronous suspension>
+```
+
+## flutter doctor
+
+```
+[32m[✓][39m Flutter (Channel stable, 3.41.4, on Ubuntu 24.04.4 LTS 6.17.0-19-generic, locale en_US.UTF-8) [38ms]
+    [32m•[39m Flutter version 3.41.4 on channel stable at /home/moon-ahmed/flutter
+    [32m•[39m Upstream repository https://github.com/flutter/flutter.git
+    [32m•[39m Framework revision ff37bef603 (13 days ago), 2026-03-03 16:03:22 -0800
+    [32m•[39m Engine revision e4b8dca3f1
+    [32m•[39m Dart version 3.11.1
+    [32m•[39m DevTools version 2.54.1
+    [32m•[39m Feature flags: enable-web, enable-linux-desktop, enable-macos-desktop, enable-windows-desktop, enable-android,
+      enable-ios, cli-animations, enable-native-assets, omit-legacy-version-file, enable-lldb-debugging,
+      enable-uiscene-migration
+
+[32m[✓][39m Android toolchain - develop for Android devices (Android SDK version 36.1.0) [1,981ms]
+    [32m•[39m Android SDK at /home/moon-ahmed/Android/Sdk
+    [32m•[39m Emulator version unknown
+    [32m•[39m Platform android-36, build-tools 36.1.0
+    [32m•[39m Java binary at: /snap/android-studio/209/jbr/bin/java
+      This is the JDK bundled with the latest Android Studio installation on this machine.
+      To manually set the JDK path, use: `flutter config --jdk-dir="path/to/jdk"`.
+    [32m•[39m Java version OpenJDK Runtime Environment (build 21.0.7+-13880790-b1038.58)
+    [32m•[39m All Android licenses accepted.
+
+[31m[✗][39m Chrome - develop for the web (Cannot find Chrome executable at google-chrome) [63ms]
+    [33m![39m Cannot find Chrome. Try setting CHROME_EXECUTABLE to a Chrome executable.
+
+[31m[✗][39m Linux toolchain - develop for Linux desktop [73ms]
+    [31m✗[39m clang++ is required for Linux development.
+      It is likely available from your distribution (e.g.: apt install clang), or can be downloaded from
+      https://releases.llvm.org/
+    [31m✗[39m CMake is required for Linux development.
+      It is likely available from your distribution (e.g.: apt install cmake), or can be downloaded from
+      https://cmake.org/download/
+    [31m✗[39m ninja is required for Linux development.
+      It is likely available from your distribution (e.g.: apt install ninja-build), or can be downloaded from
+      https://github.com/ninja-build/ninja/releases
+    [31m✗[39m pkg-config is required for Linux development.
+      It is likely available from your distribution (e.g.: apt install pkg-config), or can be downloaded from
+      https://www.freedesktop.org/wiki/Software/pkg-config/
+
+[32m[✓][39m Connected device (1 available) [87ms]
+    [32m•[39m Linux (desktop) • linux • linux-x64 • Ubuntu 24.04.4 LTS 6.17.0-19-generic
+
+[32m[✓][39m Network resources [1,622ms]
+    [32m•[39m All expected network resources are available.
+
+[33m![39m Doctor found issues in 2 categories.
+```
